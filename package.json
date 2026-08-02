@@ -24,9 +24,11 @@
     "vite": "^6.2.3"
   },
   "devDependencies": {
+    "@rollup/rollup-win32-x64-msvc": "^4.62.4",
     "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.0",
+    "lightningcss-win32-x64-msvc": "^1.33.0",
     "playwright": "^1.62.1",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",

@@ -159,8 +159,8 @@ export const SKILLS: Skill[] = [
   { name: "Git", category: "Developer Tools", iconName: "git-branch" },
   { name: "GitHub", category: "Developer Tools", iconName: "github" },
   { name: "Canva", category: "Developer Tools", iconName: "palette" },
-  { name: "HTML5", category: "Developer Tools", iconName: "code" },
-  { name: "CSS3", category: "Developer Tools", iconName: "layout" }
+  { name: "HTML5", category: "Programming", iconName: "code" },
+  { name: "CSS3", category: "Programming", iconName: "layout" }
 ];
 
 export const EXPERIENCES: Experience[] = [
@@ -212,7 +212,7 @@ export const CERTIFICATIONS: Certification[] = [
     badgeText: "Top 2% Globally (Grade 98%)",
     skills: ["MySQL", "Joins & Subqueries", "Query Optimization", "Database Design"],
     previewImage: certificateAssets.oracle,
-    downloadName: 'Oracle Dev Gym.jpg',
+    downloadName: 'Oracle Dev Gym.webp',
     verificationUrl: "https://devgym.oracle.com",
     logoType: "oracle"
   },
@@ -224,7 +224,7 @@ export const CERTIFICATIONS: Certification[] = [
     badgeText: "SQL Advanced Certified",
     skills: ["Advanced SQL", "Window Functions", "Performance Tuning", "CTEs"],
     previewImage: certificateAssets.hackerrank,
-    downloadName: 'SQL Hackerrank.jpg',
+    downloadName: 'SQL Hackerrank.webp',
     verificationUrl: "https://www.hackerrank.com/certificates/0699D94E1860",
     logoType: "hackerrank"
   },
@@ -236,7 +236,7 @@ export const CERTIFICATIONS: Certification[] = [
     badgeText: "Elite NPTEL Certified (63%)",
     skills: ["Python", "Data Structures", "Algorithms", "Problem Solving"],
     previewImage: certificateAssets.nptel,
-    downloadName: 'NPTEL.jpg',
+    downloadName: 'NPTEL.webp',
     verificationUrl: "https://nptel.ac.in",
     logoType: "nptel"
   },
@@ -248,7 +248,7 @@ export const CERTIFICATIONS: Certification[] = [
     badgeText: "Certificate of Internship",
     skills: ["AI", "TechSaksham", "Python", "Data Analytics"],
     previewImage: certificateAssets.aicte,
-    downloadName: 'AICTE Sharath.jpg',
+    downloadName: 'AICTE Sharath.webp',
     logoType: "aicte"
   },
   {
@@ -259,7 +259,7 @@ export const CERTIFICATIONS: Certification[] = [
     badgeText: "IBM Professional Certificate",
     skills: ["Data Science", "Python for AI", "Pandas", "Data Analytics"],
     previewImage: certificateAssets.ibm,
-    downloadName: 'IBM Coursera.jpg',
+    downloadName: 'IBM Coursera.webp',
     verificationUrl: "https://coursera.org/verify/ONHZAO9AXFFR",
     logoType: "ibm"
   },
@@ -271,7 +271,7 @@ export const CERTIFICATIONS: Certification[] = [
     badgeText: "Cisco Certified",
     skills: ["Networking Protocols", "TCP/IP", "Network Security", "Routing"],
     previewImage: certificateAssets.cisco,
-    downloadName: 'CCNA Sharath.jpg',
+    downloadName: 'CCNA Sharath.webp',
     verificationUrl: "https://www.credly.com/org/cisco",
     logoType: "cisco"
   }

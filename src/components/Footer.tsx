@@ -13,7 +13,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
   };
 
   return (
-    <footer className="bg-[#F8F5EF]/90 backdrop-blur-md border-t border-[#E5E0D8] py-14 text-[#6B6660] text-xs relative z-10">
+    <footer className="bg-[#F8F5EF]/90 backdrop-blur-md border-t border-[#E5E0D8] py-16 text-[#6B6660] text-xs relative z-10">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal delay={0}>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b border-[#E5E0D8]">
@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
                 href={PERSONAL_INFO.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 bg-[#FFFFFF] hover:bg-[#F8F5EF] hover:-translate-y-[1px] active:translate-y-0 text-[#222222] border border-[#E5E0D8] rounded-xl transition-all duration-200 shadow-2xs"
+                className="p-2.5 bg-[#FFFFFF] hover:bg-[#F8F5EF] text-[#222222] border border-[#E5E0D8] rounded-xl btn-tactile shadow-sm"
                 aria-label="GitHub Profile"
               >
                 <Github className="w-4 h-4" />
@@ -43,14 +43,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
                 href={PERSONAL_INFO.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 bg-[#FFFFFF] hover:bg-[#F8F5EF] hover:-translate-y-[1px] active:translate-y-0 text-[#222222] border border-[#E5E0D8] rounded-xl transition-all duration-200 shadow-2xs"
+                className="p-2.5 bg-[#FFFFFF] hover:bg-[#F8F5EF] text-[#222222] border border-[#E5E0D8] rounded-xl btn-tactile shadow-sm"
                 aria-label="LinkedIn Profile"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
                 href={`mailto:${PERSONAL_INFO.email}`}
-                className="p-2.5 bg-[#FFFFFF] hover:bg-[#F8F5EF] hover:-translate-y-[1px] active:translate-y-0 text-[#222222] border border-[#E5E0D8] rounded-xl transition-all duration-200 shadow-2xs"
+                className="p-2.5 bg-[#FFFFFF] hover:bg-[#F8F5EF] text-[#222222] border border-[#E5E0D8] rounded-xl btn-tactile shadow-sm"
                 aria-label="Email"
               >
                 <Mail className="w-4 h-4" />
@@ -58,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
               <button
                 type="button"
                 onClick={onOpenResume}
-                className="p-2.5 bg-[#FFFFFF] hover:bg-[#F8F5EF] hover:-translate-y-[1px] active:translate-y-0 text-[#222222] border border-[#E5E0D8] rounded-xl transition-all duration-200 shadow-2xs cursor-pointer"
+                className="p-2.5 bg-[#FFFFFF] hover:bg-[#F8F5EF] text-[#222222] border border-[#E5E0D8] rounded-xl btn-tactile shadow-sm cursor-pointer"
                 aria-label="Resume"
               >
                 <FileText className="w-4 h-4" />
@@ -66,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
               <button
                 type="button"
                 onClick={scrollToTop}
-                className="p-2.5 bg-[#D97745] text-white hover:bg-[#C56636] hover:-translate-y-[1px] active:translate-y-0 rounded-xl transition-all duration-200 ml-2 shadow-2xs cursor-pointer"
+                className="p-2.5 bg-[#D97745] text-white hover:bg-[#C56636] rounded-xl btn-tactile ml-2 shadow-sm cursor-pointer"
                 aria-label="Back to Top"
               >
                 <ArrowUp className="w-4 h-4" />

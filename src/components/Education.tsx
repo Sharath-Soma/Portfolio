@@ -20,10 +20,10 @@ export const Education: React.FC = () => {
         <Reveal delay={0}>
           <div className="mb-16">
             <div className="w-12 h-[2px] bg-[#D97745] mb-6" />
-            <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#D97745] font-semibold mb-3">
+            <div className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.2em] text-[#D97745] font-extrabold mb-3">
               <span>05 // ACADEMICS & QUALIFICATIONS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-[#222222] tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#111111] tracking-tighter mb-4">
               Education
             </h2>
             <p className="text-base sm:text-lg text-[#6B6660] max-w-2xl font-normal leading-relaxed">
@@ -36,7 +36,7 @@ export const Education: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
           {EDUCATION.map((edu, idx) => (
             <Reveal key={idx} delay={0.1 + idx * 0.08}>
-              <div className="flex flex-col justify-between h-full p-6 sm:p-8 bg-[#FFFFFF] rounded-[1.25rem] border border-[#E5E0D8] shadow-premium hover:shadow-premium-hover card-hover-effect hover:-translate-y-1.5 transition-all duration-300 group">
+              <div className="flex flex-col justify-between h-full p-6 sm:p-8 bg-[#FFFFFF] rounded-3xl border border-[#E5E0D8] shadow-sm hover:shadow-md card-hover-effect hover:-translate-y-1 transition-all duration-300 group">
                 <div>
                   <div className="flex items-center justify-between mb-5">
                     <span className="text-[11px] font-mono font-bold text-[#D97745] bg-[#D97745]/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
@@ -47,7 +47,7 @@ export const Education: React.FC = () => {
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-extrabold text-xl text-[#222222] mb-3 leading-snug group-hover:text-[#D97745] transition-colors">
+                  <h3 className="font-heading font-bold text-xl text-[#111111] tracking-tight mb-3 leading-snug group-hover:text-[#D97745] transition-colors">
                     {edu.degree}
                   </h3>
                   <p className="text-sm text-[#6B6660] leading-relaxed mb-6 font-medium">

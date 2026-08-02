@@ -22,10 +22,10 @@ export const Experience: React.FC = () => {
         <Reveal delay={0}>
           <div className="mb-16">
             <div className="w-12 h-[2px] bg-[#D97745] mb-6" />
-            <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#D97745] font-semibold mb-3">
+            <div className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.2em] text-[#D97745] font-extrabold mb-3">
               <span>04 // TIMELINE & TRACK RECORD</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-[#222222] tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#111111] tracking-tighter mb-4">
               Work Experience
             </h2>
             <p className="text-base sm:text-lg text-[#6B6660] max-w-2xl font-normal leading-relaxed">
@@ -40,19 +40,19 @@ export const Experience: React.FC = () => {
             <Reveal key={exp.id} delay={0.1 + idx * 0.1}>
               <div className="relative pl-6 sm:pl-10 group/timeline">
                 {/* Timeline Dot Indicator */}
-                <div className="absolute -left-[29px] sm:-left-[45px] top-6 w-3.5 h-3.5 rounded-full bg-[#F8F5EF] border-2 border-[#D97745] group-hover/timeline:scale-125 group-hover/timeline:bg-[#D97745] transition-all duration-300" />
+                <div className="absolute -left-[29px] sm:-left-[45px] top-6 w-3.5 h-3.5 rounded-full bg-[#F8F5EF] border-2 border-[#D97745] group-hover/timeline:scale-[1.3] group-hover/timeline:bg-[#D97745] transition-all duration-300 ease-out" />
 
                 {/* Experience Card */}
-                <div className="bg-[#FFFFFF] border border-[#E5E0D8] rounded-[1.25rem] p-6 sm:p-8 shadow-premium hover:shadow-premium-hover card-hover-effect hover:-translate-y-1 mb-6">
+                <div className="bg-[#FFFFFF] border border-[#E5E0D8] rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md card-hover-effect hover:-translate-y-1 mb-6">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-4">
                     <div>
-                      <span className="inline-block px-2.5 py-0.5 rounded bg-[#D97745]/10 text-xs font-mono text-[#D97745] uppercase font-bold mb-2">
+                      <span className="inline-block px-2.5 py-0.5 rounded bg-[#D97745]/10 text-[11px] font-mono text-[#D97745] uppercase font-bold tracking-wider mb-2">
                         {exp.type}
                       </span>
-                      <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-[#222222]">
+                      <h3 className="text-xl sm:text-2xl font-heading font-bold text-[#111111] tracking-tighter">
                         {exp.role}
                       </h3>
-                      <p className="text-base font-semibold text-[#6B6660]">
+                      <p className="text-[15px] font-medium text-[#6B6660]">
                         {exp.company}
                       </p>
                     </div>
@@ -70,22 +70,22 @@ export const Experience: React.FC = () => {
                   </div>
 
                   {/* Points */}
-                  <ul className="space-y-2.5 mb-6 text-sm sm:text-base text-[#55524D] leading-relaxed max-w-3xl">
+                  <ul className="space-y-1.5 mb-6 text-[15px] text-[#55524D] leading-relaxed max-w-3xl">
                     {exp.points.map((point, pIdx) => (
                       <li key={pIdx} className="flex items-start gap-3">
-                        <span className="text-[#D97745] font-bold mt-1.5 text-xs">•</span>
+                        <span className="text-[#D97745] font-bold mt-[5px] text-[10px]">•</span>
                         <span>{point}</span>
                       </li>
                     ))}
                   </ul>
 
                   {/* Skills Used */}
-                  <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-[#E5E0D8]/60">
-                    <span className="text-xs font-mono text-[#6B6660] mr-1 font-semibold">Technologies:</span>
+                  <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-[#E5E0D8]">
+                    <span className="text-[11px] font-mono text-[#A09A90] mr-1 uppercase font-bold tracking-wider">Tech:</span>
                     {exp.skillsUsed.map((skill, sIdx) => (
                       <span
                         key={sIdx}
-                        className="px-2.5 py-1 text-[11px] font-mono bg-[#F8F5EF] border border-[#E5E0D8] text-[#222222] rounded-md font-bold"
+                        className="px-2.5 py-1 text-[11px] font-mono bg-[#FFFFFF] shadow-sm border border-[#E5E0D8] text-[#222222] rounded-lg font-semibold"
                       >
                         {skill}
                       </span>

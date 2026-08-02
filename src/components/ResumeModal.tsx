@@ -71,7 +71,7 @@ ${LEADERSHIP_ACTIVITIES.map((l) => `- ${l.role}: ${l.details}`).join('\n')}
           <button
             type="button"
             onClick={handleCopyText}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#F8F5EF] hover:bg-[#FFFFFF] text-[#222222] border border-[#E5E0D8] rounded-xl text-xs font-mono font-medium btn-tactile cursor-pointer shadow-sm hover:shadow-premium"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#F8F5EF] hover:bg-[#FFFFFF] text-[#222222] border border-[#E5E0D8] rounded-xl text-[11px] font-heading font-bold uppercase tracking-wider btn-tactile cursor-pointer shadow-sm hover:shadow-premium"
           >
             {copied ? (
               <>
@@ -89,7 +89,7 @@ ${LEADERSHIP_ACTIVITIES.map((l) => `- ${l.role}: ${l.details}`).join('\n')}
 
           <a
             href={`mailto:${PERSONAL_INFO.email}?subject=Resume%20Inquiry%20-%20Soma%20Sharath%20Kumar`}
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#D97745] hover:bg-[#C56636] text-white rounded-xl text-xs font-mono font-medium btn-tactile shadow-glow"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#D97745] hover:bg-[#C56636] text-white rounded-xl text-[11px] font-heading font-bold uppercase tracking-wider btn-tactile shadow-glow"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Request PDF</span>

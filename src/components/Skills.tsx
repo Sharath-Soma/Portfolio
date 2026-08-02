@@ -107,9 +107,9 @@ const MarqueeTicker: React.FC<MarqueeTickerProps> = ({ skills, getIcon, onSelect
             <button
               key={`${skill.name}-${index}`}
               onClick={() => onSelectSkill(skill)}
-              className="inline-flex items-center gap-3 px-4 py-2.5 bg-[#F7F6F3] border border-[#E2DFD8] rounded-xl text-left hover:border-[#D98457]"
+              className="inline-flex items-center gap-3 px-4 py-2.5 bg-[#F7F6F3] border border-[#E2DFD8] rounded-2xl text-left hover:border-[#D98457]"
             >
-              <div className="w-7 h-7 rounded-lg bg-[#EFEDE8] flex items-center justify-center shrink-0">
+              <div className="w-7 h-7 rounded-xl bg-[#EFEDE8] flex items-center justify-center shrink-0">
                 {getIcon(skill.iconName)}
               </div>
               <span className="font-heading font-bold text-xs text-[#2D2B28]">
@@ -148,9 +148,9 @@ const MarqueeTicker: React.FC<MarqueeTickerProps> = ({ skills, getIcon, onSelect
               <button
                 key={`${activeCategory}-${skill.name}-${index}`}
                 onClick={() => onSelectSkill(skill)}
-                className="inline-flex items-center gap-3 px-5 py-3 mx-2.5 bg-[#F7F6F3] border border-[#E2DFD8] rounded-xl shadow-2xs shrink-0 hover:border-[#D98457] hover:bg-white active:scale-95 transition-all duration-300 text-left cursor-pointer"
+                className="inline-flex items-center gap-3 px-5 py-3 mx-2.5 bg-[#F7F6F3] border border-[#E2DFD8] rounded-2xl shadow-sm shrink-0 hover:border-[#D98457] hover:bg-white active:scale-95 transition-all duration-300 text-left cursor-pointer"
               >
-                <div className="w-8 h-8 rounded-lg bg-[#EFEDE8] flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-xl bg-[#EFEDE8] flex items-center justify-center shrink-0">
                   {getIcon(skill.iconName)}
                 </div>
                 <div className="flex flex-col">
@@ -263,10 +263,10 @@ export const Skills: React.FC = () => {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
             <div>
               <div className="w-12 h-[2px] bg-[#D97745] mb-6" />
-              <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#D97745] font-semibold mb-3">
+              <div className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.2em] text-[#D97745] font-extrabold mb-3">
                 <span>03 // COMPETENCIES & MATRIX</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-[#222222] tracking-tight mb-3">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#111111] tracking-tighter mb-3">
                 Technical Skills
               </h2>
               <p className="text-base text-[#6B6660] max-w-xl font-normal leading-relaxed">
@@ -275,7 +275,7 @@ export const Skills: React.FC = () => {
             </div>
 
               {/* Category Filter Pills */}
-              <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#FFFFFF] border border-[#E5E0D8] rounded-2xl w-fit shadow-2xs">
+              <div className="flex flex-wrap items-center p-1 bg-[#FFFFFF] border border-[#E5E0D8] rounded-2xl w-fit shadow-sm ring-1 ring-black/5 gap-1">
                 {categories.map((cat) => {
                   const isActive = activeCategory === cat;
                   return (
@@ -283,10 +283,10 @@ export const Skills: React.FC = () => {
                       key={cat}
                       type="button"
                       onClick={() => setActiveCategory(cat)}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                      className={`px-4 py-2 rounded-xl text-[11px] font-mono transition-all cursor-pointer flex items-center justify-center leading-none ${
                         isActive
-                          ? 'bg-[#222222] text-white shadow-2xs'
-                          : 'text-[#6B6660] hover:text-[#222222] hover:bg-[#F3EFE7]/60'
+                          ? 'bg-[#222222] text-white font-bold shadow-sm'
+                          : 'text-[#6B6660] hover:text-[#222222] hover:bg-[#F3EFE7]/60 font-medium'
                       }`}
                     >
                       {cat}
@@ -314,9 +314,9 @@ export const Skills: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2, delay: idx * 0.02 }}
-                className="bg-[#FFFFFF] border border-[#E5E0D8] rounded-xl p-3.5 flex items-center gap-3 hover:border-[#D97745]/60 shadow-premium hover:shadow-premium-hover card-hover-effect hover:-translate-y-1 active:scale-95 group text-left cursor-pointer"
+                className="bg-[#FFFFFF] border border-[#E5E0D8] rounded-2xl p-4 flex items-center gap-3.5 hover:border-[#D97745]/40 shadow-sm hover:shadow-md card-hover-effect hover:-translate-y-1 active:scale-[0.98] group text-left cursor-pointer"
               >
-                <div className="w-8 h-8 rounded-lg bg-[#F8F5EF] border border-[#E5E0D8] flex items-center justify-center shrink-0 group-hover:border-[#D97745]/40 transition-colors">
+                <div className="w-9 h-9 rounded-[14px] bg-[#F8F5EF] border border-[#E5E0D8] flex items-center justify-center shrink-0 group-hover:border-[#D97745]/30 transition-colors">
                   {getIcon(skill.iconName)}
                 </div>
                 <div className="min-w-0 flex-1">
@@ -348,23 +348,23 @@ export const Skills: React.FC = () => {
           onClick={() => setSelectedSkillModal(null)}
         >
           <div
-            className="relative w-full max-w-lg bg-[#F7F6F3] border border-[#E2DFD8] rounded-2xl shadow-2xl p-6 text-[#2D2B28] my-auto focus:outline-none"
+            className="relative w-full max-w-lg bg-[#F7F6F3] border border-[#E2DFD8] rounded-3xl shadow-2xl p-6 sm:p-8 text-[#2D2B28] my-auto focus:outline-none"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedSkillModal(null)}
-              className="absolute top-4 right-4 p-2 rounded-xl bg-[#EFEDE8] hover:bg-[#E8E5DF] text-[#6B6862] hover:text-[#2D2B28] transition-colors border border-[#E2DFD8]"
+              className="absolute top-4 right-4 p-2 rounded-full bg-[#EFEDE8] hover:bg-[#E8E5DF] text-[#6B6862] hover:text-[#2D2B28] transition-colors border border-[#E2DFD8]"
             >
               <X className="w-4 h-4" />
             </button>
 
-            <div className="flex items-center gap-3 pb-4 mb-4 border-b border-[#E2DFD8]">
-              <div className="w-10 h-10 rounded-xl bg-[#EFEDE8] border border-[#E2DFD8] flex items-center justify-center">
+            <div className="flex items-center gap-4 pb-4 mb-4 border-b border-[#E2DFD8]">
+              <div className="w-12 h-12 rounded-2xl bg-[#EFEDE8] border border-[#E2DFD8] flex items-center justify-center shrink-0">
                 {getIcon(selectedSkillModal.iconName)}
               </div>
               <div>
-                <span className="text-[10px] font-mono uppercase text-[#D98457] font-bold block">Skill Connections</span>
-                <h3 className="text-xl font-heading font-extrabold text-[#2D2B28]">{selectedSkillModal.name}</h3>
+                <span className="text-[10px] font-mono uppercase text-[#D98457] font-bold block mb-0.5">Skill Connections</span>
+                <h3 className="text-xl font-heading font-bold tracking-tight text-[#2D2B28]">{selectedSkillModal.name}</h3>
               </div>
             </div>
 
@@ -420,7 +420,7 @@ export const Skills: React.FC = () => {
 
             <button
               onClick={() => setSelectedSkillModal(null)}
-              className="w-full mt-5 py-2 bg-[#D98457] hover:bg-[#C27346] text-white text-xs font-mono rounded-xl font-semibold transition-colors shadow-2xs"
+              className="w-full mt-6 py-3 bg-[#D98457] hover:bg-[#C27346] text-white text-sm font-mono rounded-full font-semibold transition-colors shadow-sm"
             >
               Done
             </button>

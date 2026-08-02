@@ -36,10 +36,10 @@ export const Achievements: React.FC = () => {
         <Reveal delay={0}>
           <div className="mb-12">
             <div className="w-12 h-[2px] bg-[#D97745] mb-6" />
-            <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#D97745] font-semibold mb-3">
+            <div className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.2em] text-[#D97745] font-extrabold mb-3">
               <span>07 // ACHIEVEMENTS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-[#222222] tracking-tight mb-3">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#111111] tracking-tighter mb-3">
               Achievements
             </h2>
             <p className="text-base text-[#6B6660] max-w-2xl font-normal leading-relaxed">
@@ -53,7 +53,7 @@ export const Achievements: React.FC = () => {
           {ACHIEVEMENTS.map((item, idx) => (
             <Reveal key={item.id} delay={0.05 + idx * 0.05}>
               <div
-                className="bg-[#FFFFFF] border border-[#E5E0D8] rounded-[20px] p-6 hover:border-[#D97745]/40 hover:-translate-y-1.5 hover:shadow-[0_8px_24px_-6px_rgba(34,34,34,0.08)] active:translate-y-0 transition-all duration-250 ease-out flex flex-col justify-between h-full shadow-2xs group relative overflow-hidden"
+                className="bg-[#FFFFFF] border border-[#E5E0D8] rounded-3xl p-6 hover:border-[#D97745]/40 hover:-translate-y-1 hover:shadow-md active:translate-y-0 transition-all duration-300 ease-out flex flex-col justify-between h-full shadow-sm group relative overflow-hidden"
               >
                 {/* Tiny Decorative Corner SVG Accent */}
                 <div className="absolute top-3.5 right-3.5 pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity">
@@ -76,7 +76,7 @@ export const Achievements: React.FC = () => {
                   </div>
 
                   {/* Middle: Achievement Title & Description */}
-                  <h3 className="font-heading font-extrabold text-lg sm:text-xl text-[#222222] mb-2.5 leading-snug group-hover:text-[#D97745] transition-colors">
+                  <h3 className="font-heading font-bold text-lg sm:text-xl text-[#111111] tracking-tight mb-2.5 leading-snug group-hover:text-[#D97745] transition-colors">
                     {item.title}
                   </h3>
 

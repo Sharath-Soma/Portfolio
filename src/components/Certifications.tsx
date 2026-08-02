@@ -93,11 +93,11 @@ export const Certifications: React.FC = () => {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
             <div>
               <div className="w-12 h-[2px] bg-[#D97745] mb-6" />
-              <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#D97745] font-semibold mb-3">
+              <div className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.2em] text-[#D97745] font-extrabold mb-3">
                 <span>06 // CREDENTIALS & MILESTONES</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-[#222222] tracking-tight mb-3">
-                Certifications & Achievements
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#111111] tracking-tighter mb-3">
+                Certifications
               </h2>
               <p className="text-base text-[#6B6660] max-w-2xl font-normal leading-relaxed">
                 Official industry certifications, competitive assessment ranks, and verified academic milestones. Click any credential to inspect the authentic document.
@@ -105,16 +105,16 @@ export const Certifications: React.FC = () => {
             </div>
 
             {/* Certificate Filter Pills */}
-            <div className="flex flex-wrap items-center gap-1.5 bg-[#FFFFFF] border border-[#E5E0D8] p-1.5 rounded-xl shadow-2xs">
+            <div className="flex flex-wrap items-center p-1 bg-[#FFFFFF] border border-[#E5E0D8] rounded-2xl w-fit shadow-sm ring-1 ring-black/5 gap-1">
               {certFilters.map((f) => (
                 <button
                   key={f}
                   type="button"
                   onClick={() => setActiveFilter(f)}
-                  className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-all duration-200 select-none cursor-pointer ${
+                  className={`px-4 py-2 rounded-xl text-[11px] font-mono transition-all duration-200 select-none cursor-pointer flex items-center justify-center leading-none ${
                     activeFilter === f
-                      ? 'bg-[#222222] text-white font-bold shadow-2xs'
-                      : 'text-[#6B6660] hover:text-[#222222] hover:bg-[#F3EFE7]/60'
+                      ? 'bg-[#222222] text-white font-bold shadow-sm'
+                      : 'text-[#6B6660] hover:text-[#222222] hover:bg-[#F3EFE7]/60 font-medium'
                   }`}
                 >
                   {f}
@@ -130,6 +130,10 @@ export const Certifications: React.FC = () => {
             <Reveal key={cert.id} delay={0.05 + idx * 0.05}>
               <div
                 onClick={() => setSelectedCert(cert)}
+                onMouseEnter={() => {
+                  const img = new Image();
+                  img.src = cert.previewImage;
+                }}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
@@ -139,7 +143,7 @@ export const Certifications: React.FC = () => {
                 role="button"
                 tabIndex={0}
                 aria-label={`View ${cert.title}`}
-                className="bg-[#FFFFFF] border border-[#E5E0D8] rounded-[1.25rem] p-6 sm:p-8 hover:border-[#D97745]/40 shadow-premium hover:shadow-premium-hover card-hover-effect hover:-translate-y-1.5 active:translate-y-0 transition-all duration-300 ease-out flex flex-col justify-between h-full cursor-pointer group relative"
+                className="bg-[#FFFFFF] border border-[#E5E0D8] rounded-3xl p-6 sm:p-8 hover:border-[#D97745]/40 shadow-sm hover:shadow-md card-hover-effect hover:-translate-y-1 active:translate-y-0 transition-all duration-300 ease-out flex flex-col justify-between h-full cursor-pointer group relative"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -158,7 +162,7 @@ export const Certifications: React.FC = () => {
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-extrabold text-base sm:text-lg text-[#222222] mb-2 leading-snug group-hover:text-[#D97745] transition-colors">
+                  <h3 className="font-heading font-bold text-base sm:text-lg text-[#111111] tracking-tight mb-2 leading-snug group-hover:text-[#D97745] transition-colors">
                     {cert.title}
                   </h3>
 
@@ -175,12 +179,12 @@ export const Certifications: React.FC = () => {
                 </div>
 
                 <div className="pt-4 border-t border-[#E5E0D8] flex items-center justify-between text-xs font-mono text-[#222222] font-semibold">
-                  <div className="flex items-center gap-1.5 text-[#55524D]">
+                  <div className="flex items-center gap-1.5 text-[#55524D] font-heading font-bold uppercase tracking-wider text-[11px]">
                     <ShieldCheck className="w-4 h-4 text-[#D97745]" />
                     <span>Verified Credential</span>
                   </div>
 
-                  <span className="text-[#D97745] text-[11px] font-mono group-hover:underline inline-flex items-center gap-1">
+                  <span className="text-[#D97745] text-[11px] font-heading font-bold uppercase tracking-wider group-hover:underline inline-flex items-center gap-1">
                     View Certificate →
                   </span>
                 </div>
@@ -210,7 +214,7 @@ export const Certifications: React.FC = () => {
                     <span className="hidden md:inline">•</span>
                     <span className="text-[#6B6862] hidden md:inline">ID: {selectedCert.id.toUpperCase()}</span>
                   </div>
-                  <h2 className="text-sm sm:text-base md:text-lg font-heading font-extrabold text-[#2D2B28] truncate">
+                  <h2 className="text-sm sm:text-base md:text-lg font-heading font-bold text-[#111111] tracking-tight truncate">
                     {selectedCert.title}
                   </h2>
                 </div>
@@ -226,16 +230,16 @@ export const Certifications: React.FC = () => {
                 <a
                   href={selectedCert.previewImage}
                   download={selectedCert.downloadName}
-                  className="px-3 py-1.5 bg-[#D98457] hover:bg-[#C27346] text-white rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
+                  className="px-5 py-2.5 bg-[#D98457] hover:bg-[#C27346] text-white rounded-full text-xs font-heading font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
                 >
-                  <Download className="w-3.5 h-3.5" />
+                  <Download className="w-4 h-4" />
                   <span className="hidden sm:inline">Download</span>
                 </a>
 
                 <button
                   type="button"
                   onClick={() => setSelectedCert(null)}
-                  className="p-2 rounded-xl bg-[#FAF8F5] hover:bg-white text-[#6B6862] hover:text-[#2D2B28] transition-colors border border-[#E2DFD8] cursor-pointer shrink-0"
+                  className="p-2.5 rounded-full bg-[#FAF8F5] hover:bg-white text-[#6B6862] hover:text-[#2D2B28] transition-colors border border-[#E2DFD8] cursor-pointer shrink-0 shadow-sm"
                   aria-label="Close certificate dialog"
                 >
                   <X className="w-5 h-5" />

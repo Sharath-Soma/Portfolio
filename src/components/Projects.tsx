@@ -282,10 +282,10 @@ export const Projects: React.FC = () => {
           <div className="flex flex-col gap-6 mb-12">
             <div>
               <div className="w-12 h-[2px] bg-[#D97745] mb-6" />
-              <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#D97745] font-semibold mb-3">
+              <div className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.2em] text-[#D97745] font-extrabold mb-3">
                 <span>02 // REPOSITORIES & ENGINEERING</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-[#222222] tracking-tight mb-3">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#111111] tracking-tighter mb-3">
                 Featured Projects
               </h2>
               <p className="text-base sm:text-lg text-[#6B6660] max-w-2xl font-normal leading-relaxed">
@@ -303,7 +303,7 @@ export const Projects: React.FC = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search projects by tech (e.g., Python, RAG, MySQL)..."
-                  className="w-full pl-10 pr-9 py-2 bg-[#FFFFFF] border border-[#E5E0D8] focus:border-[#D97745] rounded-xl text-xs font-medium text-[#222222] placeholder-[#A09A90] focus:outline-none transition-all shadow-2xs"
+                  className="w-full pl-10 pr-9 py-2 bg-[#FFFFFF] border border-[#E5E0D8] focus:border-[#D97745] rounded-full text-xs font-medium text-[#222222] placeholder-[#A09A90] focus:outline-none transition-all shadow-sm ring-1 ring-black/5"
                 />
                 {searchQuery && (
                   <button
@@ -317,7 +317,7 @@ export const Projects: React.FC = () => {
               </div>
 
               {/* Filter Pills */}
-              <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#FFFFFF] border border-[#E5E0D8] rounded-2xl w-fit shadow-2xs">
+              <div className="flex flex-wrap items-center p-1 bg-[#FFFFFF] border border-[#E5E0D8] rounded-2xl w-fit shadow-sm ring-1 ring-black/5 gap-1">
                 {categories.map((filter) => {
                   const isActive = activeFilter === filter;
                   return (
@@ -325,10 +325,10 @@ export const Projects: React.FC = () => {
                       key={filter}
                       type="button"
                       onClick={() => setActiveFilter(filter)}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
+                      className={`px-4 py-2 rounded-xl text-[11px] font-mono transition-all cursor-pointer flex items-center justify-center leading-none ${
                         isActive
-                          ? 'bg-[#222222] text-white shadow-2xs'
-                          : 'text-[#6B6660] hover:text-[#222222] hover:bg-[#F3EFE7]/60'
+                          ? 'bg-[#222222] text-white font-bold shadow-sm'
+                          : 'text-[#6B6660] hover:text-[#222222] hover:bg-[#F3EFE7]/60 font-medium'
                       }`}
                     >
                       {filter}
@@ -349,7 +349,7 @@ export const Projects: React.FC = () => {
                   setSelectedProject(project);
                   setActiveGalleryTab('desktop');
                 }}
-                className="w-full text-left bg-[#FFFFFF] border border-[#E5E0D8] rounded-[1.25rem] p-6 sm:p-8 hover:border-[#D97745]/40 shadow-premium hover:shadow-premium-hover card-hover-effect hover:-translate-y-1.5 group cursor-pointer block"
+                className="w-full text-left bg-[#FFFFFF] border border-[#E5E0D8] rounded-3xl p-6 sm:p-8 hover:border-[#D97745]/40 shadow-premium hover:shadow-premium-hover card-hover-effect hover:-translate-y-2 group cursor-pointer block"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                   {/* Visual Mockup Column */}
@@ -367,7 +367,7 @@ export const Projects: React.FC = () => {
                             {project.category}
                           </span>
                         </div>
-                        <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-[#222222] tracking-tight group-hover:text-[#D97745] transition-colors">
+                        <h3 className="text-2xl sm:text-3xl font-heading font-bold text-[#111111] tracking-tighter group-hover:text-[#D97745] transition-colors">
                           {project.title}
                         </h3>
                         <span className="text-sm font-medium text-[#6B6660] mt-1 block">
@@ -380,7 +380,7 @@ export const Projects: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="p-2.5 text-[#6B6660] hover:text-[#222222] hover:bg-[#F8F5EF] btn-tactile border border-[#E5E0D8] rounded-xl shrink-0 shadow-sm hover:shadow-premium"
+                        className="p-3 text-[#6B6660] hover:text-[#222222] hover:bg-[#F8F5EF] btn-tactile border border-[#E5E0D8] rounded-full shrink-0 shadow-sm hover:shadow-premium"
                         aria-label="View on GitHub"
                         title="View Repository on GitHub"
                       >
@@ -411,14 +411,14 @@ export const Projects: React.FC = () => {
                         {project.techStack.map((tech) => (
                           <span
                             key={tech}
-                            className="px-2.5 py-1 text-[11px] font-mono bg-[#F8F5EF] border border-[#E5E0D8] text-[#222222] rounded-md font-bold"
+                            className="px-2.5 py-1 text-[11px] font-mono bg-[#FFFFFF] shadow-sm border border-[#E5E0D8] text-[#222222] rounded-lg font-semibold"
                           >
                             {tech}
                           </span>
                         ))}
                       </div>
 
-                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#D97745] hover:bg-[#C56636] text-white rounded-xl text-xs font-mono font-medium shadow-glow btn-tactile group-hover:scale-[1.02] cursor-pointer">
+                      <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#D97745] hover:bg-[#C56636] text-white rounded-full text-xs font-mono font-medium shadow-glow btn-tactile hover:-translate-y-[1px] cursor-pointer">
                         <span>View Deep Case Study</span>
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
                       </div>
@@ -484,7 +484,7 @@ export const Projects: React.FC = () => {
               <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
                 {/* Title & Headline Header */}
                 <div>
-                  <h1 className="text-2xl sm:text-3xl font-heading font-extrabold text-[#2D2B28] tracking-tight mb-1.5">
+                  <h1 className="text-2xl sm:text-3xl font-heading font-bold text-[#111111] tracking-tighter mb-1.5">
                     {selectedProject.title}
                   </h1>
                   <p className="text-sm sm:text-base text-[#6B6862] font-medium leading-relaxed">
@@ -622,7 +622,7 @@ export const Projects: React.FC = () => {
                     href={selectedProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-3 bg-[#2D2B28] hover:bg-[#1A1918] text-white rounded-xl text-xs font-mono font-bold transition-all shadow-md flex items-center gap-2"
+                    className="px-6 py-3 bg-[#222222] hover:bg-[#111111] text-white rounded-full text-xs font-mono font-bold transition-all shadow-md flex items-center gap-2"
                   >
                     <Github className="w-4 h-4" />
                     <span>View Full Source Code on GitHub</span>

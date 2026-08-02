@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 
@@ -27,7 +27,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, classNa
   const onCloseRef = useRef(onClose);
   onCloseRef.current = onClose;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!isOpen) return;
 
     const dialog = dialogRef.current;
@@ -145,10 +145,10 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, classNa
               aria-modal="true"
               aria-label={ariaLabel}
               tabIndex={-1}
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              initial={{ opacity: 0, scale: 0.98, y: 8 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300, mass: 0.8 }}
+              exit={{ opacity: 0, scale: 0.98, y: 8 }}
+              transition={{ type: 'spring', damping: 28, stiffness: 400, mass: 0.4 }}
               className={`pointer-events-auto relative flex h-[85vh] max-h-[85vh] w-[95vw] max-w-[1100px] flex-col overflow-hidden rounded-[1.25rem] border border-[#E2DFD8] bg-[#FAF8F5] text-[#2D2B28] shadow-premium sm:w-[90vw] ${className}`}
             >
               {children}

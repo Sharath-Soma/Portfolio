@@ -46,10 +46,10 @@ export const About: React.FC = () => {
         <Reveal delay={0}>
           <div className="mb-16">
             <div className="w-12 h-[2px] bg-[#D97745] mb-6" />
-            <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#D97745] font-semibold mb-3">
+            <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.15em] text-[#D97745] font-bold mb-3">
               <span>01 // ARCHITECTURE & PHILOSOPHY</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-[#222222] tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#111111] tracking-tighter mb-4">
               Engineering Focus & Approach
             </h2>
             <p className="text-base sm:text-lg text-[#6B6660] max-w-2xl font-normal leading-relaxed">
@@ -106,7 +106,7 @@ export const About: React.FC = () => {
             {pillars.map((pillar, idx) => (
               <Reveal key={idx} delay={0.15 + idx * 0.08}>
                 <div className="pb-6 border-b border-[#E5E0D8]/80 sm:border-b-0 sm:border-l sm:border-[#E5E0D8]/80 sm:pl-6 space-y-3">
-                  <div className="w-9 h-9 rounded-lg bg-[#FFFFFF] border border-[#E5E0D8] flex items-center justify-center mb-3 shadow-2xs">
+                  <div className="w-10 h-10 rounded-xl bg-[#FFFFFF] border border-[#E5E0D8] flex items-center justify-center mb-4 shadow-sm">
                     {pillar.icon}
                   </div>
                   <h3 className="font-heading font-bold text-base text-[#222222]">

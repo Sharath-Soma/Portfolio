@@ -12,6 +12,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const progressBarRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (headerRef.current) {
+        document.documentElement.style.setProperty('--header-height', `${headerRef.current.offsetHeight}px`);
+      }
+    };
+    updateHeight();
+    
+    const ro = new ResizeObserver(updateHeight);
+    if (headerRef.current) ro.observe(headerRef.current);
+    
+    return () => ro.disconnect();
+  }, []);
 
   useEffect(() => {
     let rAFId: number | null = null;
@@ -67,7 +82,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
     if (href.startsWith('#')) {
       window.setTimeout(() => {
         const targetEl = document.getElementById(href.substring(1));
-        targetEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (targetEl) {
+          const headerOffset = 80;
+          const elementPosition = targetEl.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
         window.history.pushState(null, '', href);
       }, modalIsOpen ? 210 : 0);
     }
@@ -75,35 +99,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
 
   return (
     <header
+      ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#F8F5EF]/85 backdrop-blur-2xl border-b border-[#E5E0D8]/80 py-2.5 shadow-sm'
+          ? 'bg-[#F8F5EF]/90 backdrop-blur-2xl border-b border-[#E5E0D8]/80 py-2.5 shadow-md'
           : 'bg-transparent py-4 sm:py-5'
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-3">
-          {/* Logo / Name */}
-          <a
-            href="#home"
-            onClick={(e) => handleNavClick(e, '#home')}
-            className="flex min-w-0 flex-1 items-center gap-2.5 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-[#D97745]/50 rounded-xl py-1 active:scale-[0.98] transition-all"
-          >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#222222] text-[#F8F5EF] flex items-center justify-center font-mono font-bold text-xs group-hover:bg-[#D97745] transition-colors shadow-2xs shrink-0 aspect-square select-none">
+        <div className="flex items-center justify-between w-full">
+          {/* Unified Logo & Navigation Pill */}
+          <div className="flex items-center bg-[#FFFFFF]/90 backdrop-blur-sm border border-[#E5E0D8]/90 p-1.5 rounded-[2rem] shadow-sm ring-1 ring-black/5">
+            <a
+              href="#home"
+              onClick={(e) => handleNavClick(e, '#home')}
+              className="flex-none w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#222222] text-[#F8F5EF] flex items-center justify-center font-mono font-bold text-xs sm:text-sm hover:bg-[#D97745] transition-colors select-none focus:outline-none focus:ring-2 focus:ring-[#D97745]/50 active:scale-[0.98]"
+            >
               SK
-            </div>
-            <div className="flex min-w-0 flex-col">
-              <span className="font-heading font-bold text-sm sm:text-base tracking-tight text-[#222222] group-hover:text-[#D97745] transition-colors truncate">
-                {PERSONAL_INFO.name}
-              </span>
-              <span className="text-[11px] font-mono text-[#6B6660] -mt-0.5 hidden md:block whitespace-nowrap">
-                {PERSONAL_INFO.title}
-              </span>
-            </div>
-          </a>
+            </a>
 
-          {/* Desktop Nav Links with Motion Active Pill */}
-          <nav className="hidden lg:flex items-center gap-1 bg-[#FFFFFF]/90 backdrop-blur-sm border border-[#E5E0D8]/90 p-1.5 rounded-full shadow-[0_2px_8px_-2px_rgba(34,34,34,0.03)] relative">
+            {/* Desktop Nav Links */}
+            <nav className="hidden lg:flex items-center gap-1 ml-2 relative">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -111,9 +127,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
                   key={link.id}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative px-3 py-1 text-xs font-mono rounded-full transition-colors duration-200 select-none ${
+                  className={`relative px-3 py-1.5 text-xs font-mono rounded-full transition-colors duration-200 select-none ${
                     isActive
-                      ? 'text-[#222222] font-bold'
+                      ? 'text-[#222222] font-semibold'
                       : 'text-[#6B6660] hover:text-[#222222] hover:bg-[#F3EFE7]/50'
                   }`}
                 >
@@ -130,7 +146,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
                 </a>
               );
             })}
-          </nav>
+            </nav>
+          </div>
 
           {/* Action CTAs */}
           <div className="hidden lg:flex items-center gap-1.5 shrink-0">
@@ -138,7 +155,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-[#6B6660] hover:text-[#222222] hover:bg-[#FFFFFF] btn-tactile border border-transparent hover:border-[#E5E0D8] rounded-xl hover:shadow-premium"
+              className="p-2.5 text-[#6B6660] hover:text-[#222222] hover:bg-[#FFFFFF] btn-tactile border border-transparent hover:border-[#E5E0D8] rounded-full hover:shadow-premium"
               aria-label="GitHub Profile"
             >
               <Github className="w-4 h-4" />
@@ -147,14 +164,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
               href={PERSONAL_INFO.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-[#6B6660] hover:text-[#222222] hover:bg-[#FFFFFF] btn-tactile border border-transparent hover:border-[#E5E0D8] rounded-xl hover:shadow-premium"
+              className="p-2.5 text-[#6B6660] hover:text-[#222222] hover:bg-[#FFFFFF] btn-tactile border border-transparent hover:border-[#E5E0D8] rounded-full hover:shadow-premium"
               aria-label="LinkedIn Profile"
             >
               <Linkedin className="w-4 h-4" />
             </a>
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
-              className="p-2 text-[#6B6660] hover:text-[#222222] hover:bg-[#FFFFFF] btn-tactile border border-transparent hover:border-[#E5E0D8] rounded-xl hover:shadow-premium"
+              className="p-2.5 text-[#6B6660] hover:text-[#222222] hover:bg-[#FFFFFF] btn-tactile border border-transparent hover:border-[#E5E0D8] rounded-full hover:shadow-premium"
               aria-label="Send Email"
             >
               <Mail className="w-4 h-4" />
@@ -166,9 +183,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
                 e.preventDefault();
                 onOpenResume();
               }}
-              className="flex items-center gap-1.5 px-4 py-2 text-xs font-mono font-medium text-white bg-[#D97745] hover:bg-[#C56636] hover:-translate-y-[1px] btn-tactile rounded-xl shadow-glow ml-1 cursor-pointer"
+              className="flex items-center gap-1.5 px-6 py-2.5 text-xs font-heading font-bold uppercase tracking-wider text-white bg-[#D97745] hover:bg-[#C56636] hover:-translate-y-[1px] btn-tactile rounded-full shadow-glow ml-1 cursor-pointer"
             >
-              <FileText className="w-3.5 h-3.5" />
+              <FileText className="w-4 h-4" />
               <span>Resume</span>
             </button>
           </div>
@@ -176,7 +193,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-[#222222] bg-[#FFFFFF] border border-[#E5E0D8] rounded-lg active:scale-95 transition-all shrink-0"
+            className="lg:hidden p-2.5 text-[#222222] bg-[#FFFFFF] border border-[#E5E0D8] rounded-full active:scale-95 transition-all shrink-0 shadow-sm"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -212,9 +229,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, activeSection }) =
                 setMobileMenuOpen(false);
                 onOpenResume();
               }}
-              className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-mono font-medium text-white bg-[#D98457] hover:bg-[#C27346] active:scale-98 rounded-lg transition-all cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 px-3 py-2.5 text-xs font-heading font-bold uppercase tracking-wider text-white bg-[#D98457] hover:bg-[#C27346] active:scale-98 rounded-lg transition-all cursor-pointer shadow-sm"
             >
-              <FileText className="w-3.5 h-3.5" />
+              <FileText className="w-4 h-4" />
               <span>View Resume</span>
             </button>
           </div>

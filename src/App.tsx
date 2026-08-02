@@ -40,10 +40,12 @@ export default function App() {
 
     const lenis = new Lenis({
       autoRaf: false,
-      duration: 1,
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Premium exponential easing
       smoothWheel: true,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.5,
       syncTouch: true,
-      wheelMultiplier: 1,
     });
 
 
@@ -93,47 +95,53 @@ export default function App() {
     setResumeOpen(true);
   };
 
-  // A narrow observer band prevents navigation from bouncing between sections.
+  // Synchronize scroll spy directly with Lenis and native scroll for perfect accuracy
   useEffect(() => {
     const sections = ['home', 'about', 'projects', 'skills', 'experience', 'education', 'certifications', 'achievements', 'contact'];
-    const sectionElements = sections.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
-
-    if (sectionElements.length === 0) return;
-
+    
     let rAFId: number | null = null;
 
-    const observer = new IntersectionObserver(
-      () => {
-        if (rAFId === null) {
-          rAFId = requestAnimationFrame(() => {
-            const marker = window.innerHeight * 0.35;
-            const bestSection = sectionElements.find((element) => {
-              const rect = element.getBoundingClientRect();
-              return rect.top <= marker && rect.bottom > marker;
-            })?.id ?? sectionElements.reduce((nearest, element) => {
-              const currentDistance = Math.abs(element.getBoundingClientRect().top - marker);
-              const nearestDistance = Math.abs(nearest.getBoundingClientRect().top - marker);
-              return currentDistance < nearestDistance ? element : nearest;
-            }, sectionElements[0]).id;
-
-            setActiveSection((previous) => (previous === bestSection ? previous : bestSection));
-
-            rAFId = null;
-          });
+    const handleScroll = () => {
+      if (rAFId !== null) return;
+      
+      rAFId = requestAnimationFrame(() => {
+        const sectionElements = sections.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+        if (sectionElements.length === 0) {
+          rAFId = null;
+          return;
         }
-      },
-      {
-        root: null,
-        rootMargin: '-35% 0px -64% 0px',
-        threshold: 0,
-      }
-    );
 
-    sectionElements.forEach((el) => observer.observe(el));
+        const headerHeight = parseInt(document.documentElement.style.getPropertyValue('--header-height')) || 80;
+        // Trigger line at 25% of viewport below header
+        const scrollPosition = window.scrollY + headerHeight + (window.innerHeight * 0.25);
+        
+        let currentSection = sections[0];
+        
+        for (const el of sectionElements) {
+          if (el.offsetTop <= scrollPosition) {
+            currentSection = el.id;
+          } else {
+            break;
+          }
+        }
+        
+        // Handle absolute bottom of page to ensure Contact triggers
+        if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight - 10) {
+           currentSection = sections[sections.length - 1];
+        }
+
+        setActiveSection(currentSection);
+        rAFId = null;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run once on mount
+    handleScroll();
 
     return () => {
       if (rAFId !== null) cancelAnimationFrame(rAFId);
-      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -164,7 +172,7 @@ export default function App() {
       />
 
       {/* Main Content Sections */}
-      <main id="main-content" className="w-full">
+      <main id="main-content" className="w-full" style={{ paddingTop: 'var(--header-height, 100px)' }}>
         <Hero onOpenResume={handleOpenResume} />
         <About />
         <React.Suspense fallback={<div className="py-20 text-center text-[#6B6660]">Loading section...</div>}>

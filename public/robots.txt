@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://somasharathkumar.dev/sitemap.xml
+Sitemap: https://soma-sharath-kumar-portfolio.netlify.app/sitemap.xml
